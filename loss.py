@@ -17,7 +17,7 @@ class MSELoss:
     def __call__(self, y_pred, y_true):
         self.y_pred = y_pred
         self.y_true = y_true
-        return np.sum(np.square(y_pred - y_true)) / y_pred.size
+        return np.mean(np.sum(np.square(y_pred - y_true), 1))
 
     def backward(self):
         dy_pred = 2 * (self.y_pred - self.y_true) / self.y_pred.size

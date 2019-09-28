@@ -8,7 +8,7 @@ class Identity:
         return x
 
     def dev(self, x):
-        return np.ones_like(x)
+        return np.ones_like(x) 
 
 class ReLU:
     def __init__(self):
@@ -28,17 +28,18 @@ class Softplus: #  approximation RELU
         return np.log(1.0 + np.exp(x))
 
     def dev(self, x):
-        return 1.0 / (1.0 + np.exp(-x) ) 
+        return 1.0 / (1.0 + np.exp(-x)  ) 
 
 class Sigmoid:
     def __init__(self):
         self.name = 'sigmoid'
 
     def __call__(self, x):
-        return 1/(1+np.exp(-x))
+        return 1/( 1 + np.exp(-x) )
 
     def dev(self, x):
-        return (1/(1+np.exp(-x)))*(1-1/(1+np.exp(-x)))
+        x_sigmoid = 1/( 1 + np.exp(-x) )
+        return x_sigmoid*(1-x_sigmoid)
 
 activation_fns_d = {
     'relu': ReLU() ,
